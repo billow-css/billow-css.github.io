@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Steam 游戏兑换码</title>
+  <title>Microsoft 365 订阅通知</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,176 +13,261 @@
       margin: 0;
       min-height: 100vh;
       padding: 48px 20px;
-      font-family: Arial, "Helvetica Neue", "Microsoft YaHei", sans-serif;
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
       font-size: 14px;
       line-height: 1.7;
-      color: #c7d5e0;
-      background: radial-gradient(ellipse at top, #1f3044 0%, #171a21 55%, #121419 100%);
+      color: #323130;
+      background: #f3f2f1;
     }
 
-    .email {
-      max-width: 520px;
+    .letter {
+      max-width: 760px;
+      width: 100%;
       margin: 0 auto;
-      background: #1b2838;
-      border: 1px solid #2a475e;
-      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid #edebe9;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .email-header {
-      padding: 20px 28px 18px;
-      border-bottom: 1px solid #2a475e;
-      background: linear-gradient(180deg, rgba(42, 71, 94, 0.35) 0%, transparent 100%);
+    .letter-top {
+      height: 4px;
+      background: linear-gradient(90deg, #0078d4 0%, #106ebe 50%, #0078d4 100%);
     }
 
-    .email-header .label {
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #66c0f4;
-      margin-bottom: 6px;
+    .letter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px 20px;
+      border-bottom: 1px solid #edebe9;
     }
 
-    .email-header h1 {
-      margin: 0;
-      font-size: 18px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .brand-icon span {
+      border-radius: 1px;
+    }
+
+    .brand-icon span:nth-child(1) { background: #f25022; }
+    .brand-icon span:nth-child(2) { background: #7fba00; }
+    .brand-icon span:nth-child(3) { background: #00a4ef; }
+    .brand-icon span:nth-child(4) { background: #ffb900; }
+
+    .brand-text {
+      font-size: 15px;
       font-weight: 600;
-      color: #ffffff;
+      color: #323130;
     }
 
-    .email-header .game {
-      margin-top: 8px;
-      display: inline-block;
-      padding: 3px 10px;
-      font-size: 12px;
-      color: #8f98a0;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid #2a475e;
-      border-radius: 3px;
+    .brand-text small {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: #605e5c;
+      margin-top: 1px;
     }
 
-    .email-body {
-      padding: 24px 28px 28px;
+    .badge {
+      font-size: 11px;
+      color: #0078d4;
+      background: #eff6fc;
+      border: 1px solid #c7e0f4;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .letter-body {
+      padding: 32px 40px 28px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #201f1e;
+      line-height: 1.4;
     }
 
     p {
       margin: 0 0 14px;
-      color: #acb2b8;
+      color: #605e5c;
     }
 
-    p strong {
-      color: #c7d5e0;
-      font-weight: 600;
+    .notice {
+      padding: 14px 16px;
+      margin: 18px 0;
+      background: #fff4ce;
+      border-left: 4px solid #ffb900;
+      border-radius: 0 2px 2px 0;
+      font-size: 13px;
+      color: #605e5c;
     }
 
-    .code-block {
+    .notice strong {
+      color: #323130;
+    }
+
+    .serial-block {
       margin: 22px 0;
-      padding: 22px 16px;
+      padding: 20px 16px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.22);
-      border: 1px dashed #3d6a8a;
+      background: #faf9f8;
+      border: 1px solid #edebe9;
       border-radius: 4px;
     }
 
-    .code-label {
+    .serial-label {
       font-size: 11px;
-      color: #62666c;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #605e5c;
       margin-bottom: 10px;
     }
 
-    .code {
-      font-size: 30px;
-      font-weight: bold;
-      letter-spacing: 8px;
-      color: #ffffff;
+    .serial {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #0078d4;
       font-family: Consolas, "Courier New", monospace;
-      text-shadow: 0 0 24px rgba(102, 192, 244, 0.25);
+      word-break: break-all;
     }
 
     .steps {
       padding: 14px 16px;
       margin: 18px 0 14px;
-      background: rgba(102, 192, 244, 0.06);
-      border-left: 3px solid #66c0f4;
-      border-radius: 0 4px 4px 0;
+      background: #eff6fc;
+      border-left: 4px solid #0078d4;
+      border-radius: 0 2px 2px 0;
       font-size: 13px;
-      color: #8f98a0;
+      color: #605e5c;
     }
 
     .steps strong {
       display: block;
       margin-bottom: 6px;
-      color: #66c0f4;
+      color: #0078d4;
       font-size: 12px;
+      font-weight: 600;
+    }
+
+    .apology {
+      padding: 14px 16px;
+      margin-top: 18px;
+      background: #f3f2f1;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #605e5c;
+      font-style: italic;
     }
 
     .divider {
       height: 1px;
-      background: #2a475e;
-      margin: 22px 0 18px;
+      background: #edebe9;
+      margin: 22px 0 16px;
     }
 
     .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
       font-size: 12px;
-      color: #62666c;
-      margin-bottom: 4px;
+      color: #a19f9d;
     }
 
-    .footer {
-      padding: 16px 28px 20px;
-      background: rgba(0, 0, 0, 0.15);
-      border-top: 1px solid #2a475e;
+    .letter-footer {
+      padding: 18px 40px 22px;
+      background: #faf9f8;
+      border-top: 1px solid #edebe9;
       font-size: 12px;
-      color: #62666c;
+      color: #a19f9d;
       line-height: 1.65;
+    }
+
+    .letter-footer a {
+      color: #0078d4;
+      text-decoration: none;
+    }
+
+    .letter-footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <div class="email">
+  <div class="letter">
 
-    <div class="email-header">
-      <div class="label">Steam 产品密钥</div>
-      <h1>您的游戏兑换码</h1>
-      <span class="game">《艾尔登法环》</span>
+    <div class="letter-top"></div>
+
+    <div class="letter-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="brand-text">
+          Microsoft
+          <small>Microsoft 365</small>
+        </div>
+      </div>
+      <span class="badge">订阅通知</span>
     </div>
 
-    <div class="email-body">
+    <div class="letter-body">
 
-      <p>您好，</p>
+      <h1>您的 Office 365 序列号已更新</h1>
 
-      <p>感谢您在 Steam 购买<strong>《艾尔登法环》</strong>。以下是您的游戏兑换码，请妥善保管。每个兑换码<strong>仅可使用一次</strong>。</p>
+      <p>尊敬的用户，您好：</p>
 
-      <div class="code-block">
-        <div class="code-label">兑换码</div>
-        <div class="code">4MJSQ</div>
+      <p>由于系统维护与订阅信息同步调整，您账户下绑定的 <strong>Microsoft 365（Office 365）</strong> 产品序列号已更换为以下内容。请您妥善保存新的序列号，以便后续使用。</p>
+
+      <div class="serial-block">
+        <div class="serial-label">更新后的产品序列号</div>
+        <div class="serial">SBJSQ-NTMSL-4MJSQ-WCNMD</div>
+      </div>
+
+      <div class="notice">
+        <strong>重要提醒：</strong>当前订阅到期后，Office 应用可能会提示您重新激活。届时请使用上方<strong>新的产品序列号</strong>，在 Microsoft 账户中心或 Office 客户端中选择「更改产品密钥 / 激活产品」完成重新激活，即可继续正常使用。
       </div>
 
       <div class="steps">
-        <strong>兑换方法</strong>
-        打开 Steam 客户端，点击左下角「添加游戏」→「在 Steam 上激活产品」，输入上方兑换码并完成激活。激活后，游戏将出现在您的游戏库中。
+        <strong>重新激活步骤</strong>
+        打开任意 Office 应用（如 Word）→ 进入「文件」→「账户」→ 点击「更改产品密钥」→ 输入上方序列号并按提示完成激活。您也可以登录 account.microsoft.com 在「服务和订阅」中管理您的 Microsoft 365 订阅。
       </div>
 
-      <p>如果您并非此订单的购买者，请勿使用此兑换码。如有疑问，请前往 Steam 帮助中心联系客服。</p>
+      <p>对于此次序列号变更可能给您带来的不便，我们深表歉意。感谢您的理解与支持。如有任何疑问，欢迎联系 Microsoft 客户支持获取帮助。</p>
+
+      <div class="apology">
+        再次为给您造成的不便致以诚挚歉意，我们将持续改进服务体验，确保您的订阅与使用过程更加顺畅。
+      </div>
 
       <div class="divider"></div>
 
       <div class="meta">
-        <span>订单编号：STEAM-20260630-847291</span>
-        <span>购买时间：2026年6月30日</span>
+        通知编号：MS365-NOTIFY-20260630<br>
+        发送时间：2026年6月30日
       </div>
 
     </div>
 
-    <div class="footer">
-      此邮件由 Steam 自动发送，请勿回复。<br>
-      © Valve Corporation
+    <div class="letter-footer">
+      此邮件由 Microsoft 自动发送，请勿直接回复。<br>
+      <a href="#">Microsoft 账户</a> ·
+      <a href="#">服务与支持</a> ·
+      <a href="#">隐私声明</a><br>
+      © 2026 Microsoft Corporation
     </div>
 
   </div>
